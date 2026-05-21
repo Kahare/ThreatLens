@@ -1,0 +1,10 @@
+Website Vulnerability Scan Report
+---------------------------------
+
+Target: www.tattel.co.uk
+Risk Score: 3
+
+Detected Vulnerabilities:
+- Missing Security Header: Content-Security-Policy
+- Missing Security Header: X-Frame-Options
+- Missing Security Header: Strict-Transport-Security
