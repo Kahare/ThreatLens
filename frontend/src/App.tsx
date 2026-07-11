@@ -1,11 +1,7 @@
+import Landing from "./pages/Landing";
+
 function App() {
-  return (
-    <div className="min-h-screen bg-black flex items-center justify-center">
-      <h1 className="text-6xl font-bold text-purple-500">
-        Threat Lens
-      </h1>
-    </div>
-  );
+  return <Landing />;
 }
 
 export default App;
