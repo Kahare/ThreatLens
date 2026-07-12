@@ -1,54 +1,37 @@
-import { Shield } from "lucide-react";
-function Navbar() {
+import logo from "../assets/threatlens-logo.png";
+
+const Navbar = () => {
   return (
-    <nav className="bg-[#0B1120] border-b border-zinc-800 text-white">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-5">
-
+    <header className="fixed top-0 left-0 z-50 w-full border-b border-zinc-800 bg-[#09090B]/95">
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-        <Shield size={28} className="text-cyan-400" />
+        <a href="/" className="flex items-center gap-1">
+          <div className="origin-top transition-transform duration-300 hover:-rotate-3">
+          <img
+            src={logo}
+            alt="ThreatLens Logo"
+            className="h-16 w-auto object-contain"
+          />
+        </div>
 
-        <h1 className="text-xl font-bold">
-            Threat Lens
-        </h1>
-       </div>
-
-        {/* Navigation */}
-        <div className="flex gap-8">
-          <a
-            href="#"
-            className="hover:text-cyan-400 transition-colors duration-200"
-        >
-            Features
+          <h1 className="text-3xl font-bold tracking-tight text-white">
+            ThreatLens
+          </h1>
         </a>
 
-          <a href="#" className="hover:text-cyan-400 transition-colors duration-200">
-            Docs
-          </a>
-
-          <a href="#" className="hover:text-cyan-400 transition-colors duration-200">
-            GitHub
-          </a>
-        </div>
-
-        {/* Buttons */}
-        <div className="flex gap-4">
-          <button
-        className="px-4 py-2 rounded-xl hover:scale-105 transition-colors duration-200"
-        >
+        {/* Right Side */}
+        <div className="flex items-center gap-8">
+          <button className="text-lg font-medium text-zinc-300 transition duration-300 hover:text-white">
             Login
-        </button>
+          </button>
 
-          <button
-        className="bg-cyan-400 text-black px-5 py-2 rounded-xl font-semibold hover:bg-cyan-300 transition-all duration-200 shadow-lg shadow-cyan-500/20"
-        >
+          <button className="rounded-2xl bg-gradient-to-r from-violet-600 to-blue-500 px-6 py-3 text-lg font-semibold text-white transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-violet-500/20">
             Get Started
-        </button>
+          </button>
         </div>
-
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
-}
+};
 
 export default Navbar;

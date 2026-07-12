@@ -1,12 +1,17 @@
-import Navbar from "../components/navbar";
-
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import DashboardPreview from "../components/DashBoardPreview";
 
 function Landing() {
   return (
     <>
+      
       <Navbar />
-
-      <h1>Landing Page</h1>
+      <Hero />
+      <DashboardPreview />
+    
+      
+      
     </>
   );
 }
