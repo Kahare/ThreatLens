@@ -3,11 +3,11 @@ import { ArrowRight } from "lucide-react";
 const Hero = () => {
   return (
     <section className="mx-auto flex max-w-7xl flex-col items-center px-6 pt-36 text-center">
-      <h1 className="bg-gradient-to-b from-cyan via-zinc-100 to-zinc-400 bg-clip-text text-6xl font-bold tracking-tight text-transparent md:text-7xl lg:text-8xl">
+      <h1 className="bg-gradient-to-b from-cyan via-zinc-100 to-zinc-400 bg-clip-text text-6xl font-bold tracking-tight text-transparent md:text-7xl lg:text-6xl">
         THREATLENS
       </h1>
 
-      <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-400">
+      <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
         AI-Powered Web Vulnerability Intelligence Platform. Automatically crawl
         endpoints, fuzz parameters, map vectors to MITRE ATT&CK frameworks, and
         generate instant secure code remediations.
