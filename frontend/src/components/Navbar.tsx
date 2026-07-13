@@ -25,9 +25,7 @@ const Navbar = () => {
             Login
           </button>
 
-          <button className="rounded-2xl bg-gradient-to-r from-violet-600 to-blue-500 px-6 py-3 text-lg font-semibold text-white transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-violet-500/20">
-            Get Started
-          </button>
+          
         </div>
       </nav>
     </header>
