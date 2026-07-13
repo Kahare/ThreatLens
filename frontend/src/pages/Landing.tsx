@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import DashboardPreview from "../components/DashBoardPreview";
+import DashboardPreview from "../components/DashboardPreview";
 import Features from "../components/Features";
 import Workflow from "../components/Workflow";
 import CTA from "../components/CTA";
