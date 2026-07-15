@@ -36,7 +36,7 @@ const Login = () => {
         <div className="flex w-full items-center justify-center px-6 lg:w-1/2">
           <div className="w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-900/60 p-8 backdrop-blur-lg">
             <h2 className="text-3xl font-bold">
-              Welcome Back 👋
+              Welcome Back !
             </h2>
 
             <p className="mt-2 text-zinc-400">
