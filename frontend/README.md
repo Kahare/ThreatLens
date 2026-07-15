@@ -1,75 +1,169 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="./src/assets/threatlens-logo.png" alt="ThreatLens Logo" width="120"/>
 
-Currently, two official plugins are available:
+# 🛡️ ThreatLens Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Modern Cybersecurity Dashboard Built with React, TypeScript & Vite
 
-## React Compiler
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-06B6D4?logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+A modern, responsive frontend for **ThreatLens**, a cybersecurity platform designed to help security professionals monitor threats, visualize security insights, and manage incidents through an intuitive web interface.
 
-## Expanding the ESLint configuration
+</div>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# 📖 About
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+ThreatLens is a collaborative cybersecurity platform focused on delivering a clean, scalable, and user-friendly experience for security monitoring.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+This repository contains the **frontend application**, built with modern web technologies and designed with performance, accessibility, and maintainability in mind.
 
+The frontend focuses on creating an intuitive interface for authentication, dashboards, threat visualization, analytics, and user interaction.
+
+---
+
+# ✨ Features
+
+- Responsive User Interface
+- Modern Landing Page
+- User Authentication Interface
+- Dashboard Layout
+- Modular Component Architecture
+- Dark Theme
+- Fast Performance with Vite
+- Client-side Routing
+- Reusable UI Components
+- Mobile-Friendly Design
+
+---
+
+# 🛠 Tech Stack
+
+### Frontend
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Lucide React
+
+---
+
+# 📂 Project Structure
+
+```text
+src/
+├── assets/
+├── components/
+├── hooks/
+├── layouts/
+├── pages/
+├── routes/
+├── services/
+├── utils/
+├── App.tsx
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# 🚀 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Clone the repository
 
+```bash
+git clone https://github.com/Sandeep-7981/ThreatLens-Frontend.git
 ```
+
+### Navigate into the project
+
+```bash
+cd ThreatLens-Frontend
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the development server
+
+```bash
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+---
+
+# 🤝 Collaboration
+
+ThreatLens is developed as a collaborative project.
+
+| Repository | Maintainer |
+|------------|------------|
+| **ThreatLens Frontend** | **Sandeep B** |
+| **ThreatLens Backend** | **Anthony Kahare** |
+
+This repository is dedicated to frontend development. Backend services, authentication, APIs, and database management are maintained in a separate backend repository.
+
+---
+
+# 🎯 Objectives
+
+- Build a modern cybersecurity dashboard
+- Deliver a clean and responsive user experience
+- Follow scalable React architecture
+- Integrate securely with backend services
+- Apply modern UI/UX principles
+- Strengthen frontend engineering practices
+
+---
+
+# 👨‍💻 Frontend Developer
+
+### Sandeep B
+
+Cybersecurity • Cloud Security • Digital Forensics • Frontend Development
+
+**Responsibilities**
+
+- UI/UX Design
+- React Development
+- TypeScript
+- Frontend Architecture
+- Responsive Design
+- Component Development
+
+**GitHub**
+
+https://github.com/Kahare/ThreatLens/tree/main/frontend
+
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+<div align="center">
+
+⭐ If you like this project, consider giving it a star.
+
+Built with ❤️ using React, TypeScript, and Tailwind CSS.
+
+</div>
