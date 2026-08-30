@@ -170,15 +170,24 @@ def display_summary(
             )
 
 
-def main():
+def run_scan(target):
     """
-    Main vulnerability scanner controller.
+    Run a vulnerability scan programmatically.
+
+    Args:
+        target (str):
+            Full target URL.
+
+    Returns:
+        dict:
+            Complete scan result for the API/frontend.
     """
 
-    target, domain = get_target()
+    parsed_url = urlparse(target)
+    domain = parsed_url.hostname
 
-    if not target or not domain:
-        return
+    if not domain:
+        raise ValueError("Invalid target URL.")
 
     print(
         f"\n[*] Starting vulnerability scan "
@@ -189,57 +198,34 @@ def main():
     # CONNECTION CHECK
     # ==========================================
 
-    response = check_connection(
-        target
-    )
+    response = check_connection(target)
 
     if response is None:
-
-        print(
-            "\n[-] Scan stopped because "
-            "the target could not be reached."
+        raise RuntimeError(
+            "The target could not be reached."
         )
-
-        return
 
     # ==========================================
     # PORT SCAN
     # ==========================================
 
-    open_ports = scan_ports(
-        domain
-    )
+    open_ports = scan_ports(domain)
 
     port_results = {
         "open_ports": open_ports,
         "issues": []
     }
 
-    # Add findings for selected exposed services
-
     for port in open_ports:
 
-        port_number = port.get(
-            "port"
-        )
-
-        service = port.get(
-            "service"
-        )
-
-        # --------------------------------
-        # FTP
-        # --------------------------------
+        port_number = port.get("port")
+        service = port.get("service")
 
         if port_number == 21:
 
-            port_results[
-                "issues"
-            ].append({
-                "issue":
-                    "FTP service exposed",
-                "severity":
-                    "Medium",
+            port_results["issues"].append({
+                "issue": "FTP service exposed",
+                "severity": "Medium",
                 "evidence":
                     f"Port {port_number} - {service}",
                 "recommendation":
@@ -248,19 +234,11 @@ def main():
                     "such as SFTP."
             })
 
-        # --------------------------------
-        # TELNET
-        # --------------------------------
-
         elif port_number == 23:
 
-            port_results[
-                "issues"
-            ].append({
-                "issue":
-                    "Telnet service exposed",
-                "severity":
-                    "High",
+            port_results["issues"].append({
+                "issue": "Telnet service exposed",
+                "severity": "High",
                 "evidence":
                     f"Port {port_number} - {service}",
                 "recommendation":
@@ -268,19 +246,12 @@ def main():
                     "encrypted protocol such as SSH."
             })
 
-        # --------------------------------
-        # SSH
-        # --------------------------------
-
         elif port_number == 22:
 
-            port_results[
-                "issues"
-            ].append({
+            port_results["issues"].append({
                 "issue":
                     "SSH service publicly accessible",
-                "severity":
-                    "Low",
+                "severity": "Low",
                 "evidence":
                     f"Port {port_number} - {service}",
                 "recommendation":
@@ -289,19 +260,12 @@ def main():
                     "network restrictions."
             })
 
-        # --------------------------------
-        # MYSQL
-        # --------------------------------
-
         elif port_number == 3306:
 
-            port_results[
-                "issues"
-            ].append({
+            port_results["issues"].append({
                 "issue":
                     "MySQL service exposed",
-                "severity":
-                    "High",
+                "severity": "High",
                 "evidence":
                     f"Port {port_number} - {service}",
                 "recommendation":
@@ -314,42 +278,27 @@ def main():
     # SECURITY HEADERS
     # ==========================================
 
-    header_results = (
-        check_security_headers(
-            response
-        )
-    )
-
-    # Convert missing headers into findings
-    # so risk.py can process them.
+    header_results = check_security_headers(response)
 
     header_results.setdefault(
         "issues",
         []
     )
 
-    for missing_header in (
-        header_results.get(
-            "missing",
-            []
-        )
+    for missing_header in header_results.get(
+        "missing",
+        []
     ):
 
-        header_name = (
-            missing_header.get(
-                "header"
-            )
+        header_name = missing_header.get(
+            "header"
         )
 
-        description = (
-            missing_header.get(
-                "description"
-            )
+        description = missing_header.get(
+            "description"
         )
 
-        header_results[
-            "issues"
-        ].append({
+        header_results["issues"].append({
             "issue":
                 f"Missing security header: "
                 f"{header_name}",
@@ -367,90 +316,51 @@ def main():
     # COOKIE SECURITY
     # ==========================================
 
-    cookie_results = (
-        check_cookies(
-            response
-        )
-    )
+    cookie_results = check_cookies(response)
 
     # ==========================================
     # SSL/TLS
     # ==========================================
 
-    ssl_results = (
-        check_ssl(
-            domain
-        )
-    )
+    ssl_results = check_ssl(domain)
 
     # ==========================================
     # SERVER INFORMATION
     # ==========================================
 
-    server_results = (
-        check_server_info(
-            response
-        )
-    )
+    server_results = check_server_info(response)
 
     # ==========================================
     # REDIRECTS
     # ==========================================
 
-    redirect_results = (
-        check_redirects(
-            response
-        )
-    )
+    redirect_results = check_redirects(response)
 
     # ==========================================
     # ROBOTS.TXT
     # ==========================================
 
-    robots_results = (
-        check_robots(
-            target
-        )
-    )
+    robots_results = check_robots(target)
 
     # ==========================================
     # SECURITY.TXT
     # ==========================================
 
-    securitytxt_results = (
-        check_security_txt(
-            target
-        )
-    )
+    securitytxt_results = check_security_txt(target)
 
     # ==========================================
     # STORE ALL MODULE RESULTS
     # ==========================================
 
     module_results = {
-        "ports":
-            port_results,
-
-        "headers":
-            header_results,
-
-        "cookies":
-            cookie_results,
-
-        "ssl":
-            ssl_results,
-
-        "server_info":
-            server_results,
-
-        "redirects":
-            redirect_results,
-
-        "robots":
-            robots_results,
-
-        "securitytxt":
-            securitytxt_results
+        "ports": port_results,
+        "headers": header_results,
+        "cookies": cookie_results,
+        "ssl": ssl_results,
+        "server_info": server_results,
+        "redirects": redirect_results,
+        "robots": robots_results,
+        "securitytxt": securitytxt_results
     }
 
     # ==========================================
@@ -459,16 +369,6 @@ def main():
 
     risk_results = calculate_risk(
         *module_results.values()
-    )
-
-    # ==========================================
-    # DISPLAY SUMMARY
-    # ==========================================
-
-    display_summary(
-        target,
-        domain,
-        risk_results
     )
 
     # ==========================================
@@ -483,29 +383,82 @@ def main():
     )
 
     # ==========================================
-    # COMPLETE
+    # FINAL API RESULT
     # ==========================================
 
-    print("\n")
-    print("=" * 60)
-    print("SCAN COMPLETED")
-    print("=" * 60)
+    from datetime import datetime
 
-    print(
-        f"TXT Report: "
-        f"{report_paths.get('txt_report')}"
-    )
+    result = {
+        "scan_information": {
+            "target": target,
+            "domain": domain,
+            "scan_time":
+                datetime.now().isoformat()
+        },
 
-    print(
-        f"JSON Report: "
-        f"{report_paths.get('json_report')}"
-    )
+        "risk_summary": risk_results,
 
-    print(
-        "\nUse this tool only against systems "
-        "you own or have explicit permission "
-        "to assess."
-    )
+        "module_results": module_results,
+
+        "report_paths": report_paths
+    }
+
+    print("\n[+] Scan completed successfully.")
+
+    return result
+
+
+def main():
+    """
+    CLI entry point for the vulnerability scanner.
+    """
+
+    target, domain = get_target()
+
+    if not target or not domain:
+        return
+
+    try:
+
+        result = run_scan(target)
+
+        display_summary(
+            target,
+            domain,
+            result["risk_summary"]
+        )
+
+        report_paths = result.get(
+            "report_paths",
+            {}
+        )
+
+        print("\n")
+        print("=" * 60)
+        print("SCAN COMPLETED")
+        print("=" * 60)
+
+        print(
+            f"TXT Report: "
+            f"{report_paths.get('txt_report')}"
+        )
+
+        print(
+            f"JSON Report: "
+            f"{report_paths.get('json_report')}"
+        )
+
+        print(
+            "\nUse this tool only against systems "
+            "you own or have explicit permission "
+            "to assess."
+        )
+
+    except Exception as error:
+
+        print(
+            f"\n[-] Scan failed: {error}"
+        )
 
 
 if __name__ == "__main__":

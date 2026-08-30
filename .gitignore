@@ -11,7 +11,27 @@ node_modules
 dist
 dist-ssr
 *.local
+# Python virtual environments
+venv/
+.venv/
+frontend/venv/
 
+# Python cache
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Frontend build
+dist/
+
+# Environment variables
+.env
+.env.*
+
+# IDE
+.vscode/
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,0 +1,106 @@
+VULNERABILITY SCAN REPORT
+============================================================
+
+SCAN INFORMATION
+------------------------------------------------------------
+Target: https://example.com/
+Domain: example.com
+Scan Time: 2026-08-30 12:11:59
+
+RISK SUMMARY
+------------------------------------------------------------
+Overall Risk Level: LOW
+Risk Score: 6
+Total Findings: 7
+
+SEVERITY BREAKDOWN
+------------------------------------------------------------
+Critical: 0
+High: 0
+Medium: 0
+Low: 6
+Informational: 1
+
+DETAILED FINDINGS
+------------------------------------------------------------
+
+Finding 1
+Title: Missing security header: Content-Security-Policy
+Severity: Low
+Score: 1
+Evidence: Helps reduce XSS and content injection attacks.
+Recommendation: Review and configure the Content-Security-Policy HTTP security header where appropriate.
+
+Finding 2
+Title: Missing security header: Strict-Transport-Security
+Severity: Low
+Score: 1
+Evidence: Forces browsers to use HTTPS.
+Recommendation: Review and configure the Strict-Transport-Security HTTP security header where appropriate.
+
+Finding 3
+Title: Missing security header: X-Frame-Options
+Severity: Low
+Score: 1
+Evidence: Helps protect against clickjacking.
+Recommendation: Review and configure the X-Frame-Options HTTP security header where appropriate.
+
+Finding 4
+Title: Missing security header: X-Content-Type-Options
+Severity: Low
+Score: 1
+Evidence: Helps prevent MIME-type sniffing.
+Recommendation: Review and configure the X-Content-Type-Options HTTP security header where appropriate.
+
+Finding 5
+Title: Missing security header: Referrer-Policy
+Severity: Low
+Score: 1
+Evidence: Controls how much referrer information is shared.
+Recommendation: Review and configure the Referrer-Policy HTTP security header where appropriate.
+
+Finding 6
+Title: Server header exposes server information
+Severity: Low
+Score: 1
+Evidence: cloudflare
+Recommendation: Consider reducing or removing detailed server version information from HTTP responses.
+
+Finding 7
+Title: security.txt file not found
+Severity: Informational
+Score: 0
+Recommendation: Consider publishing a security.txt file containing vulnerability reporting contact information.
+
+
+MODULE SUMMARY
+------------------------------------------------------------
+
+[PORTS]
+Issues detected: 0
+
+[HEADERS]
+Issues detected: 5
+
+[COOKIES]
+Issues detected: 0
+
+[SSL]
+Issues detected: 0
+
+[SERVER_INFO]
+Issues detected: 1
+
+[REDIRECTS]
+Issues detected: 0
+
+[ROBOTS]
+Issues detected: 0
+
+[SECURITYTXT]
+Issues detected: 1
+
+
+DISCLAIMER
+------------------------------------------------------------
+This scanner performs basic security checks and does not provide a complete vulnerability assessment. Testing should only be performed against systems you own or have explicit permission to assess.

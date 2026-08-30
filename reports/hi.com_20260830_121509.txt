@@ -1,0 +1,85 @@
+VULNERABILITY SCAN REPORT
+============================================================
+
+SCAN INFORMATION
+------------------------------------------------------------
+Target: https://hi.com/
+Domain: hi.com
+Scan Time: 2026-08-30 12:15:09
+
+RISK SUMMARY
+------------------------------------------------------------
+Overall Risk Level: LOW
+Risk Score: 3
+Total Findings: 4
+
+SEVERITY BREAKDOWN
+------------------------------------------------------------
+Critical: 0
+High: 0
+Medium: 0
+Low: 3
+Informational: 1
+
+DETAILED FINDINGS
+------------------------------------------------------------
+
+Finding 1
+Title: Missing security header: Content-Security-Policy
+Severity: Low
+Score: 1
+Evidence: Helps reduce XSS and content injection attacks.
+Recommendation: Review and configure the Content-Security-Policy HTTP security header where appropriate.
+
+Finding 2
+Title: X-Powered-By header exposes technology information
+Severity: Low
+Score: 1
+Evidence: Next.js
+Recommendation: Remove or suppress the X-Powered-By header where possible.
+
+Finding 3
+Title: Via header exposes technology information
+Severity: Low
+Score: 1
+Evidence: 1.1 1619dfffe3eeee4e3904972dc1c08828.cloudfront.net (CloudFront)
+Recommendation: Review whether the Via header is required and suppress unnecessary version information.
+
+Finding 4
+Title: security.txt file not found
+Severity: Informational
+Score: 0
+Recommendation: Consider publishing a security.txt file containing vulnerability reporting contact information.
+
+
+MODULE SUMMARY
+------------------------------------------------------------
+
+[PORTS]
+Issues detected: 0
+
+[HEADERS]
+Issues detected: 1
+
+[COOKIES]
+Issues detected: 0
+
+[SSL]
+Issues detected: 0
+
+[SERVER_INFO]
+Issues detected: 2
+
+[REDIRECTS]
+Issues detected: 0
+
+[ROBOTS]
+Issues detected: 0
+
+[SECURITYTXT]
+Issues detected: 1
+
+
+DISCLAIMER
+------------------------------------------------------------
+This scanner performs basic security checks and does not provide a complete vulnerability assessment. Testing should only be performed against systems you own or have explicit permission to assess.

@@ -1,0 +1,198 @@
+{
+    "scan_information": {
+        "target": "https://example.com/",
+        "domain": "example.com",
+        "scan_time": "2026-08-25 18:08:22"
+    },
+    "risk_summary": {
+        "risk_score": 6,
+        "risk_level": "LOW",
+        "total_findings": 7,
+        "severity_counts": {
+            "Informational": 1,
+            "Low": 6,
+            "Medium": 0,
+            "High": 0,
+            "Critical": 0
+        },
+        "findings": [
+            {
+                "issue": "Missing security header: Content-Security-Policy",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps reduce XSS and content injection attacks.",
+                "recommendation": "Review and configure the Content-Security-Policy HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: Strict-Transport-Security",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Forces browsers to use HTTPS.",
+                "recommendation": "Review and configure the Strict-Transport-Security HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: X-Frame-Options",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps protect against clickjacking.",
+                "recommendation": "Review and configure the X-Frame-Options HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: X-Content-Type-Options",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps prevent MIME-type sniffing.",
+                "recommendation": "Review and configure the X-Content-Type-Options HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: Referrer-Policy",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Controls how much referrer information is shared.",
+                "recommendation": "Review and configure the Referrer-Policy HTTP security header where appropriate."
+            },
+            {
+                "issue": "Server header exposes server information",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "cloudflare",
+                "recommendation": "Consider reducing or removing detailed server version information from HTTP responses."
+            },
+            {
+                "issue": "security.txt file not found",
+                "severity": "Informational",
+                "score": 0,
+                "evidence": null,
+                "recommendation": "Consider publishing a security.txt file containing vulnerability reporting contact information."
+            }
+        ]
+    },
+    "module_results": {
+        "ports": {
+            "open_ports": [
+                {
+                    "port": 80,
+                    "service": "HTTP"
+                },
+                {
+                    "port": 443,
+                    "service": "HTTPS"
+                }
+            ],
+            "issues": []
+        },
+        "headers": {
+            "found": [],
+            "missing": [
+                {
+                    "header": "Content-Security-Policy",
+                    "description": "Helps reduce XSS and content injection attacks."
+                },
+                {
+                    "header": "Strict-Transport-Security",
+                    "description": "Forces browsers to use HTTPS."
+                },
+                {
+                    "header": "X-Frame-Options",
+                    "description": "Helps protect against clickjacking."
+                },
+                {
+                    "header": "X-Content-Type-Options",
+                    "description": "Helps prevent MIME-type sniffing."
+                },
+                {
+                    "header": "Referrer-Policy",
+                    "description": "Controls how much referrer information is shared."
+                }
+            ],
+            "issues": [
+                {
+                    "issue": "Missing security header: Content-Security-Policy",
+                    "severity": "Low",
+                    "evidence": "Helps reduce XSS and content injection attacks.",
+                    "recommendation": "Review and configure the Content-Security-Policy HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: Strict-Transport-Security",
+                    "severity": "Low",
+                    "evidence": "Forces browsers to use HTTPS.",
+                    "recommendation": "Review and configure the Strict-Transport-Security HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: X-Frame-Options",
+                    "severity": "Low",
+                    "evidence": "Helps protect against clickjacking.",
+                    "recommendation": "Review and configure the X-Frame-Options HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: X-Content-Type-Options",
+                    "severity": "Low",
+                    "evidence": "Helps prevent MIME-type sniffing.",
+                    "recommendation": "Review and configure the X-Content-Type-Options HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: Referrer-Policy",
+                    "severity": "Low",
+                    "evidence": "Controls how much referrer information is shared.",
+                    "recommendation": "Review and configure the Referrer-Policy HTTP security header where appropriate."
+                }
+            ]
+        },
+        "cookies": {
+            "cookies_found": [],
+            "issues": []
+        },
+        "ssl": {
+            "available": true,
+            "valid": true,
+            "tls_version": "TLSv1.3",
+            "issuer": "Cloudflare TLS Issuing ECC CA 3",
+            "subject": "example.com",
+            "expires": "2026-10-27T22:17:21+00:00",
+            "days_remaining": 63,
+            "issues": []
+        },
+        "server_info": {
+            "server": "cloudflare",
+            "powered_by": null,
+            "other_headers": {},
+            "issues": [
+                {
+                    "issue": "Server header exposes server information",
+                    "severity": "Low",
+                    "evidence": "cloudflare",
+                    "recommendation": "Consider reducing or removing detailed server version information from HTTP responses."
+                }
+            ]
+        },
+        "redirects": {
+            "redirect_count": 0,
+            "redirect_chain": [],
+            "final_url": "https://example.com/",
+            "https_upgrade": false,
+            "issues": []
+        },
+        "robots": {
+            "found": false,
+            "url": "https://example.com/robots.txt",
+            "status_code": 404,
+            "disallowed_paths": [],
+            "issues": []
+        },
+        "securitytxt": {
+            "found": false,
+            "url": "https://example.com/.well-known/security.txt",
+            "status_code": 404,
+            "contacts": [],
+            "expires": null,
+            "policy": null,
+            "issues": [
+                {
+                    "issue": "security.txt file not found",
+                    "severity": "Informational",
+                    "recommendation": "Consider publishing a security.txt file containing vulnerability reporting contact information."
+                }
+            ]
+        }
+    }
+}

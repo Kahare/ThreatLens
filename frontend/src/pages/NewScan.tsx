@@ -1,21 +1,29 @@
 import {
   AlertTriangle,
-  ArrowLeft,
   Check,
   Cookie,
   FileText,
   Globe,
   Lock,
+  LoaderCircle,
   Network,
   Play,
   RefreshCw,
+  ScanLine,
   Server,
   ShieldCheck,
-  ScanLine,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../api";
 
 const NewScan = () => {
+  const navigate = useNavigate();
+
+  const [target, setTarget] = useState("");
+  const [scanning, setScanning] = useState(false);
+  const [error, setError] = useState("");
+
   const scanModules = [
     {
       name: "Connection Check",
@@ -64,40 +72,107 @@ const NewScan = () => {
     },
   ];
 
+  const startScan = async () => {
+      setError("");
+
+      let url = target.trim();
+
+      if (!url) {
+        setError("Please enter a target URL.");
+        return;
+      }
+
+      // Allow users to enter example.com instead of https://example.com
+      if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        url = `https://${url}`;
+      }
+
+      // Validate URL
+      try {
+        new URL(url);
+      } catch {
+        setError("Please enter a valid website URL.");
+        return;
+      }
+
+      setScanning(true);
+
+      const token =
+        localStorage.getItem("threatlens_token") ||
+        sessionStorage.getItem("threatlens_token");
+
+      try {
+        const response = await api.post(
+          "/api/scan",
+          {
+            target: url,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        // Save the complete scan result
+        sessionStorage.setItem(
+          "threatlens_scan_result",
+          JSON.stringify(response.data)
+        );
+
+        // Go to findings after successful scan
+        navigate("/findings");
+      } catch (err: any) {
+        console.error("Scan failed:", err);
+
+        const message =
+          err?.response?.data?.detail ||
+          "Unable to complete the scan. Please make sure the backend is running.";
+
+        setError(message);
+      } finally {
+        setScanning(false);
+      }
+    }; 
+    
+
+      
+
   return (
-    <div className="min-h-screen bg-[#09090B] text-white">
-      {/* Header */}
-      <header className="flex h-16 items-center justify-between border-b border-zinc-800 px-5 sm:px-8">
-        <div className="flex items-center gap-4">
-          <Link
-            to="/dashboard"
-            className="flex items-center gap-2 text-sm text-zinc-500 transition hover:text-white"
-          >
-            <ArrowLeft size={17} />
-            Dashboard
-          </Link>
+    <>
+      {/* Page Header */}
+      <header className="flex h-16 items-center justify-between border-b border-zinc-800 px-5 sm:px-7">
+        <div>
+          <h1 className="text-base font-semibold sm:text-lg">
+            New Security Scan
+          </h1>
 
-          <div className="h-4 w-px bg-zinc-800" />
-
-          <h1 className="text-sm font-semibold">New Scan</h1>
+          <p className="mt-0.5 hidden text-xs text-zinc-600 sm:block">
+            Configure and start a vulnerability assessment.
+          </p>
         </div>
 
         <div className="flex items-center gap-2 text-xs text-zinc-600">
-          <span className="h-2 w-2 bg-green-500" />
-          Scanner ready
+          <span
+            className={`h-2 w-2 ${
+              scanning ? "animate-pulse bg-yellow-500" : "bg-green-500"
+            }`}
+          />
+
+          {scanning ? "Scanner running" : "Scanner ready"}
         </div>
       </header>
 
       {/* Content */}
-      <main className="mx-auto max-w-5xl px-5 py-8 sm:px-8">
-        {/* Page heading */}
+      <main className="mx-auto max-w-5xl px-5 py-8 sm:px-7">
+        {/* Intro */}
         <section>
           <p className="text-xs font-medium uppercase tracking-wider text-blue-500">
             Vulnerability Scanner
           </p>
 
           <h2 className="mt-2 text-2xl font-semibold tracking-tight">
-            New Security Scan
+            Start a Security Scan
           </h2>
 
           <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-500">
@@ -130,16 +205,53 @@ const NewScan = () => {
 
                 <input
                   type="url"
+                  value={target}
+                  onChange={(e) => {
+                    setTarget(e.target.value);
+                    setError("");
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !scanning) {
+                      startScan();
+                    }
+                  }}
+                  disabled={scanning}
                   placeholder="https://example.com"
-                  className="h-11 w-full border border-zinc-800 bg-[#09090B] pl-10 pr-4 text-sm text-white outline-none placeholder:text-zinc-700 transition focus:border-blue-500"
+                  className="h-11 w-full border border-zinc-800 bg-[#09090B] pl-10 pr-4 text-sm text-white outline-none placeholder:text-zinc-700 transition focus:border-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
                 />
               </div>
 
-              <button className="flex h-11 items-center justify-center gap-2 bg-blue-600 px-6 text-sm font-medium transition hover:bg-blue-700">
-                <Play size={16} />
-                Start Scan
+              <button
+                type="button"
+                onClick={startScan}
+                disabled={scanning}
+                className="flex h-11 items-center justify-center gap-2 bg-blue-600 px-6 text-sm font-medium transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-600/50"
+              >
+                {scanning ? (
+                  <>
+                    <LoaderCircle
+                      size={16}
+                      className="animate-spin"
+                    />
+                    Scanning...
+                  </>
+                ) : (
+                  <>
+                    <Play size={16} />
+                    Start Scan
+                  </>
+                )}
               </button>
             </div>
+
+            {/* Error */}
+            {error && (
+              <div className="mt-4 border border-red-500/20 bg-red-500/[0.03] px-4 py-3">
+                <p className="text-xs text-red-400">
+                  {error}
+                </p>
+              </div>
+            )}
 
             <p className="mt-3 text-xs text-zinc-600">
               Example: https://example.com
@@ -147,7 +259,7 @@ const NewScan = () => {
           </div>
         </section>
 
-        {/* Scanner checks */}
+        {/* Scanner Checks */}
         <section className="mt-6 border border-zinc-800 bg-zinc-900/20">
           <div className="border-b border-zinc-800 px-5 py-4">
             <div className="flex items-center justify-between">
@@ -202,7 +314,7 @@ const NewScan = () => {
           </div>
         </section>
 
-        {/* Scan process */}
+        {/* Scan Process */}
         <section className="mt-6 border border-zinc-800 bg-zinc-900/20">
           <div className="border-b border-zinc-800 px-5 py-4">
             <h3 className="text-sm font-semibold">
@@ -217,9 +329,11 @@ const NewScan = () => {
           <div className="grid divide-y divide-zinc-800 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             <div className="px-5 py-5">
               <p className="text-xs text-zinc-600">01</p>
+
               <p className="mt-2 text-sm font-medium">
                 Target validation
               </p>
+
               <p className="mt-1 text-xs leading-5 text-zinc-600">
                 Validate the URL and establish a connection.
               </p>
@@ -227,9 +341,11 @@ const NewScan = () => {
 
             <div className="px-5 py-5">
               <p className="text-xs text-zinc-600">02</p>
+
               <p className="mt-2 text-sm font-medium">
                 Security analysis
               </p>
+
               <p className="mt-1 text-xs leading-5 text-zinc-600">
                 Execute the configured vulnerability checks.
               </p>
@@ -237,9 +353,11 @@ const NewScan = () => {
 
             <div className="px-5 py-5">
               <p className="text-xs text-zinc-600">03</p>
+
               <p className="mt-2 text-sm font-medium">
                 Risk assessment
               </p>
+
               <p className="mt-1 text-xs leading-5 text-zinc-600">
                 Aggregate findings and calculate the final risk level.
               </p>
@@ -247,7 +365,7 @@ const NewScan = () => {
           </div>
         </section>
 
-        {/* Authorization warning */}
+        {/* Authorization Warning */}
         <section className="mt-6 flex gap-3 border border-yellow-500/20 bg-yellow-500/[0.03] p-4">
           <AlertTriangle
             size={18}
@@ -267,7 +385,7 @@ const NewScan = () => {
           </div>
         </section>
 
-        {/* Bottom action */}
+        {/* Bottom Actions */}
         <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
           <Link
             to="/dashboard"
@@ -276,13 +394,30 @@ const NewScan = () => {
             Cancel
           </Link>
 
-          <button className="flex h-10 items-center justify-center gap-2 bg-blue-600 px-5 text-sm font-medium transition hover:bg-blue-700">
-            <ScanLine size={16} />
-            Start Security Scan
+          <button
+            type="button"
+            onClick={startScan}
+            disabled={scanning}
+            className="flex h-10 items-center justify-center gap-2 bg-blue-600 px-5 text-sm font-medium transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-600/50"
+          >
+            {scanning ? (
+              <>
+                <LoaderCircle
+                  size={16}
+                  className="animate-spin"
+                />
+                Scanning...
+              </>
+            ) : (
+              <>
+                <ScanLine size={16} />
+                Start Security Scan
+              </>
+            )}
           </button>
         </div>
       </main>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,172 @@
+{
+    "scan_information": {
+        "target": "https://hi.com/",
+        "domain": "hi.com",
+        "scan_time": "2026-08-30 12:15:09"
+    },
+    "risk_summary": {
+        "risk_score": 3,
+        "risk_level": "LOW",
+        "total_findings": 4,
+        "severity_counts": {
+            "Informational": 1,
+            "Low": 3,
+            "Medium": 0,
+            "High": 0,
+            "Critical": 0
+        },
+        "findings": [
+            {
+                "issue": "Missing security header: Content-Security-Policy",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps reduce XSS and content injection attacks.",
+                "recommendation": "Review and configure the Content-Security-Policy HTTP security header where appropriate."
+            },
+            {
+                "issue": "X-Powered-By header exposes technology information",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Next.js",
+                "recommendation": "Remove or suppress the X-Powered-By header where possible."
+            },
+            {
+                "issue": "Via header exposes technology information",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "1.1 1619dfffe3eeee4e3904972dc1c08828.cloudfront.net (CloudFront)",
+                "recommendation": "Review whether the Via header is required and suppress unnecessary version information."
+            },
+            {
+                "issue": "security.txt file not found",
+                "severity": "Informational",
+                "score": 0,
+                "evidence": null,
+                "recommendation": "Consider publishing a security.txt file containing vulnerability reporting contact information."
+            }
+        ]
+    },
+    "module_results": {
+        "ports": {
+            "open_ports": [
+                {
+                    "port": 25,
+                    "service": "SMTP"
+                },
+                {
+                    "port": 80,
+                    "service": "HTTP"
+                },
+                {
+                    "port": 443,
+                    "service": "HTTPS"
+                }
+            ],
+            "issues": []
+        },
+        "headers": {
+            "found": [
+                {
+                    "header": "Strict-Transport-Security",
+                    "description": "Forces browsers to use HTTPS.",
+                    "value": "max-age=31536000"
+                },
+                {
+                    "header": "X-Frame-Options",
+                    "description": "Helps protect against clickjacking.",
+                    "value": "SAMEORIGIN"
+                },
+                {
+                    "header": "X-Content-Type-Options",
+                    "description": "Helps prevent MIME-type sniffing.",
+                    "value": "nosniff"
+                },
+                {
+                    "header": "Referrer-Policy",
+                    "description": "Controls how much referrer information is shared.",
+                    "value": "strict-origin-when-cross-origin"
+                }
+            ],
+            "missing": [
+                {
+                    "header": "Content-Security-Policy",
+                    "description": "Helps reduce XSS and content injection attacks."
+                }
+            ],
+            "issues": [
+                {
+                    "issue": "Missing security header: Content-Security-Policy",
+                    "severity": "Low",
+                    "evidence": "Helps reduce XSS and content injection attacks.",
+                    "recommendation": "Review and configure the Content-Security-Policy HTTP security header where appropriate."
+                }
+            ]
+        },
+        "cookies": {
+            "cookies_found": [],
+            "issues": []
+        },
+        "ssl": {
+            "available": true,
+            "valid": true,
+            "tls_version": "TLSv1.3",
+            "issuer": "Amazon RSA 2048 M04",
+            "subject": "*.hi.com",
+            "expires": "2026-11-25T23:59:59+00:00",
+            "days_remaining": 87,
+            "issues": []
+        },
+        "server_info": {
+            "server": null,
+            "powered_by": "Next.js",
+            "other_headers": {
+                "Via": "1.1 1619dfffe3eeee4e3904972dc1c08828.cloudfront.net (CloudFront)"
+            },
+            "issues": [
+                {
+                    "issue": "X-Powered-By header exposes technology information",
+                    "severity": "Low",
+                    "evidence": "Next.js",
+                    "recommendation": "Remove or suppress the X-Powered-By header where possible."
+                },
+                {
+                    "issue": "Via header exposes technology information",
+                    "severity": "Low",
+                    "evidence": "1.1 1619dfffe3eeee4e3904972dc1c08828.cloudfront.net (CloudFront)",
+                    "recommendation": "Review whether the Via header is required and suppress unnecessary version information."
+                }
+            ]
+        },
+        "redirects": {
+            "redirect_count": 0,
+            "redirect_chain": [],
+            "final_url": "https://hi.com/",
+            "https_upgrade": false,
+            "issues": []
+        },
+        "robots": {
+            "found": true,
+            "url": "https://hi.com/robots.txt",
+            "status_code": 200,
+            "disallowed_paths": [
+                "/api/*"
+            ],
+            "issues": []
+        },
+        "securitytxt": {
+            "found": false,
+            "url": "https://hi.com/.well-known/security.txt",
+            "status_code": 404,
+            "contacts": [],
+            "expires": null,
+            "policy": null,
+            "issues": [
+                {
+                    "issue": "security.txt file not found",
+                    "severity": "Informational",
+                    "recommendation": "Consider publishing a security.txt file containing vulnerability reporting contact information."
+                }
+            ]
+        }
+    }
+}
