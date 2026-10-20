@@ -1,0 +1,279 @@
+{
+    "scan_information": {
+        "target": "https://gvpihlr.in/",
+        "domain": "gvpihlr.in",
+        "scan_time": "2026-10-08 04:47:23"
+    },
+    "risk_summary": {
+        "risk_score": 15,
+        "risk_level": "HIGH",
+        "total_findings": 12,
+        "severity_counts": {
+            "Informational": 1,
+            "Low": 9,
+            "Medium": 2,
+            "High": 0,
+            "Critical": 0
+        },
+        "findings": [
+            {
+                "issue": "HttpOnly flag missing",
+                "severity": "Medium",
+                "score": 3,
+                "evidence": null,
+                "recommendation": null
+            },
+            {
+                "issue": "HttpOnly flag missing",
+                "severity": "Medium",
+                "score": 3,
+                "evidence": null,
+                "recommendation": null
+            },
+            {
+                "issue": "Missing security header: Content-Security-Policy",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps reduce XSS and content injection attacks.",
+                "recommendation": "Review and configure the Content-Security-Policy HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: Strict-Transport-Security",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Forces browsers to use HTTPS.",
+                "recommendation": "Review and configure the Strict-Transport-Security HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: X-Frame-Options",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps protect against clickjacking.",
+                "recommendation": "Review and configure the X-Frame-Options HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: X-Content-Type-Options",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps prevent MIME-type sniffing.",
+                "recommendation": "Review and configure the X-Content-Type-Options HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: Referrer-Policy",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Controls how much referrer information is shared.",
+                "recommendation": "Review and configure the Referrer-Policy HTTP security header where appropriate."
+            },
+            {
+                "issue": "SameSite attribute missing",
+                "severity": "Low",
+                "score": 1,
+                "evidence": null,
+                "recommendation": null
+            },
+            {
+                "issue": "SameSite attribute missing",
+                "severity": "Low",
+                "score": 1,
+                "evidence": null,
+                "recommendation": null
+            },
+            {
+                "issue": "Server header exposes server information",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Microsoft-IIS/10.0",
+                "recommendation": "Consider reducing or removing detailed server version information from HTTP responses."
+            },
+            {
+                "issue": "X-Powered-By header exposes technology information",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "PHP/8.4.24, ASP.NET",
+                "recommendation": "Remove or suppress the X-Powered-By header where possible."
+            },
+            {
+                "issue": "security.txt file not found",
+                "severity": "Informational",
+                "score": 0,
+                "evidence": null,
+                "recommendation": "Consider publishing a security.txt file containing vulnerability reporting contact information."
+            }
+        ]
+    },
+    "module_results": {
+        "ports": {
+            "open_ports": [
+                {
+                    "port": 80,
+                    "service": "HTTP"
+                },
+                {
+                    "port": 443,
+                    "service": "HTTPS"
+                }
+            ],
+            "issues": []
+        },
+        "headers": {
+            "found": [],
+            "missing": [
+                {
+                    "header": "Content-Security-Policy",
+                    "description": "Helps reduce XSS and content injection attacks."
+                },
+                {
+                    "header": "Strict-Transport-Security",
+                    "description": "Forces browsers to use HTTPS."
+                },
+                {
+                    "header": "X-Frame-Options",
+                    "description": "Helps protect against clickjacking."
+                },
+                {
+                    "header": "X-Content-Type-Options",
+                    "description": "Helps prevent MIME-type sniffing."
+                },
+                {
+                    "header": "Referrer-Policy",
+                    "description": "Controls how much referrer information is shared."
+                }
+            ],
+            "issues": [
+                {
+                    "issue": "Missing security header: Content-Security-Policy",
+                    "severity": "Low",
+                    "evidence": "Helps reduce XSS and content injection attacks.",
+                    "recommendation": "Review and configure the Content-Security-Policy HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: Strict-Transport-Security",
+                    "severity": "Low",
+                    "evidence": "Forces browsers to use HTTPS.",
+                    "recommendation": "Review and configure the Strict-Transport-Security HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: X-Frame-Options",
+                    "severity": "Low",
+                    "evidence": "Helps protect against clickjacking.",
+                    "recommendation": "Review and configure the X-Frame-Options HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: X-Content-Type-Options",
+                    "severity": "Low",
+                    "evidence": "Helps prevent MIME-type sniffing.",
+                    "recommendation": "Review and configure the X-Content-Type-Options HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: Referrer-Policy",
+                    "severity": "Low",
+                    "evidence": "Controls how much referrer information is shared.",
+                    "recommendation": "Review and configure the Referrer-Policy HTTP security header where appropriate."
+                }
+            ]
+        },
+        "cookies": {
+            "cookies_found": [
+                {
+                    "name": "XSRF-TOKEN",
+                    "secure": true,
+                    "httponly": false,
+                    "samesite": null
+                },
+                {
+                    "name": "gvpihlr-session",
+                    "secure": true,
+                    "httponly": false,
+                    "samesite": null
+                }
+            ],
+            "issues": [
+                {
+                    "cookie": "XSRF-TOKEN",
+                    "issue": "HttpOnly flag missing",
+                    "severity": "Medium"
+                },
+                {
+                    "cookie": "XSRF-TOKEN",
+                    "issue": "SameSite attribute missing",
+                    "severity": "Low"
+                },
+                {
+                    "cookie": "gvpihlr-session",
+                    "issue": "HttpOnly flag missing",
+                    "severity": "Medium"
+                },
+                {
+                    "cookie": "gvpihlr-session",
+                    "issue": "SameSite attribute missing",
+                    "severity": "Low"
+                }
+            ]
+        },
+        "ssl": {
+            "available": true,
+            "valid": true,
+            "tls_version": "TLSv1.2",
+            "issuer": "EM DV TLS CA - G2A-1",
+            "subject": "gvpihlr.in",
+            "expires": "2026-12-07T03:24:29+00:00",
+            "days_remaining": 59,
+            "issues": []
+        },
+        "server_info": {
+            "server": "Microsoft-IIS/10.0",
+            "powered_by": "PHP/8.4.24, ASP.NET",
+            "other_headers": {},
+            "issues": [
+                {
+                    "issue": "Server header exposes server information",
+                    "severity": "Low",
+                    "evidence": "Microsoft-IIS/10.0",
+                    "recommendation": "Consider reducing or removing detailed server version information from HTTP responses."
+                },
+                {
+                    "issue": "X-Powered-By header exposes technology information",
+                    "severity": "Low",
+                    "evidence": "PHP/8.4.24, ASP.NET",
+                    "recommendation": "Remove or suppress the X-Powered-By header where possible."
+                }
+            ]
+        },
+        "redirects": {
+            "redirect_count": 1,
+            "redirect_chain": [
+                {
+                    "status_code": 302,
+                    "url": "https://gvpihlr.in/",
+                    "location": "https://gvpihlr.in/intro"
+                }
+            ],
+            "final_url": "https://gvpihlr.in/intro",
+            "https_upgrade": false,
+            "issues": []
+        },
+        "robots": {
+            "found": true,
+            "url": "https://gvpihlr.in/robots.txt",
+            "status_code": 200,
+            "disallowed_paths": [],
+            "issues": []
+        },
+        "securitytxt": {
+            "found": false,
+            "url": "https://gvpihlr.in/.well-known/security.txt",
+            "status_code": 404,
+            "contacts": [],
+            "expires": null,
+            "policy": null,
+            "issues": [
+                {
+                    "issue": "security.txt file not found",
+                    "severity": "Informational",
+                    "recommendation": "Consider publishing a security.txt file containing vulnerability reporting contact information."
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,122 @@
+VULNERABILITY SCAN REPORT
+============================================================
+
+SCAN INFORMATION
+------------------------------------------------------------
+Target: https://www.google.com/
+Domain: www.google.com
+Scan Time: 2026-10-01 04:34:36
+
+RISK SUMMARY
+------------------------------------------------------------
+Overall Risk Level: HIGH
+Risk Score: 16
+Total Findings: 10
+
+SEVERITY BREAKDOWN
+------------------------------------------------------------
+Critical: 0
+High: 0
+Medium: 3
+Low: 7
+Informational: 0
+
+DETAILED FINDINGS
+------------------------------------------------------------
+
+Finding 1
+Title: FTP service exposed
+Severity: Medium
+Score: 3
+Evidence: Port 21 - FTP
+Recommendation: Disable FTP where possible or use a secure alternative such as SFTP.
+
+Finding 2
+Title: HttpOnly flag missing
+Severity: Medium
+Score: 3
+
+Finding 3
+Title: Secure flag missing
+Severity: Medium
+Score: 3
+
+Finding 4
+Title: Missing security header: Content-Security-Policy
+Severity: Low
+Score: 1
+Evidence: Helps reduce XSS and content injection attacks.
+Recommendation: Review and configure the Content-Security-Policy HTTP security header where appropriate.
+
+Finding 5
+Title: Missing security header: Strict-Transport-Security
+Severity: Low
+Score: 1
+Evidence: Forces browsers to use HTTPS.
+Recommendation: Review and configure the Strict-Transport-Security HTTP security header where appropriate.
+
+Finding 6
+Title: Missing security header: X-Content-Type-Options
+Severity: Low
+Score: 1
+Evidence: Helps prevent MIME-type sniffing.
+Recommendation: Review and configure the X-Content-Type-Options HTTP security header where appropriate.
+
+Finding 7
+Title: Missing security header: Referrer-Policy
+Severity: Low
+Score: 1
+Evidence: Controls how much referrer information is shared.
+Recommendation: Review and configure the Referrer-Policy HTTP security header where appropriate.
+
+Finding 8
+Title: SameSite attribute missing
+Severity: Low
+Score: 1
+
+Finding 9
+Title: Server header exposes server information
+Severity: Low
+Score: 1
+Evidence: gws
+Recommendation: Consider reducing or removing detailed server version information from HTTP responses.
+
+Finding 10
+Title: Potentially sensitive path exposed in robots.txt
+Severity: Low
+Score: 1
+Evidence: /accounts/ClientLogin
+Recommendation: Do not rely on robots.txt to protect sensitive resources. Use proper authentication and access controls.
+
+
+MODULE SUMMARY
+------------------------------------------------------------
+
+[PORTS]
+Issues detected: 1
+
+[HEADERS]
+Issues detected: 4
+
+[COOKIES]
+Issues detected: 3
+
+[SSL]
+Issues detected: 0
+
+[SERVER_INFO]
+Issues detected: 1
+
+[REDIRECTS]
+Issues detected: 0
+
+[ROBOTS]
+Issues detected: 1
+
+[SECURITYTXT]
+Issues detected: 0
+
+
+DISCLAIMER
+------------------------------------------------------------
+This scanner performs basic security checks and does not provide a complete vulnerability assessment. Testing should only be performed against systems you own or have explicit permission to assess.

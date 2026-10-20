@@ -1,0 +1,225 @@
+{
+    "scan_information": {
+        "target": "http://main.gvpims.in/details_display.jsp",
+        "domain": "main.gvpims.in",
+        "scan_time": "2026-10-08 04:47:48"
+    },
+    "risk_summary": {
+        "risk_score": 9,
+        "risk_level": "MEDIUM",
+        "total_findings": 8,
+        "severity_counts": {
+            "Informational": 1,
+            "Low": 6,
+            "Medium": 1,
+            "High": 0,
+            "Critical": 0
+        },
+        "findings": [
+            {
+                "issue": "HTTP does not redirect to HTTPS",
+                "severity": "Medium",
+                "score": 3,
+                "evidence": null,
+                "recommendation": "Configure HTTP requests to redirect to HTTPS."
+            },
+            {
+                "issue": "SSH service publicly accessible",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Port 22 - SSH",
+                "recommendation": "Review SSH access controls, authentication settings and network restrictions."
+            },
+            {
+                "issue": "Missing security header: Content-Security-Policy",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps reduce XSS and content injection attacks.",
+                "recommendation": "Review and configure the Content-Security-Policy HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: Strict-Transport-Security",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Forces browsers to use HTTPS.",
+                "recommendation": "Review and configure the Strict-Transport-Security HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: X-Frame-Options",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps protect against clickjacking.",
+                "recommendation": "Review and configure the X-Frame-Options HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: X-Content-Type-Options",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Helps prevent MIME-type sniffing.",
+                "recommendation": "Review and configure the X-Content-Type-Options HTTP security header where appropriate."
+            },
+            {
+                "issue": "Missing security header: Referrer-Policy",
+                "severity": "Low",
+                "score": 1,
+                "evidence": "Controls how much referrer information is shared.",
+                "recommendation": "Review and configure the Referrer-Policy HTTP security header where appropriate."
+            },
+            {
+                "issue": "security.txt file not found",
+                "severity": "Informational",
+                "score": 0,
+                "evidence": null,
+                "recommendation": "Consider publishing a security.txt file containing vulnerability reporting contact information."
+            }
+        ]
+    },
+    "module_results": {
+        "ports": {
+            "open_ports": [
+                {
+                    "port": 22,
+                    "service": "SSH"
+                },
+                {
+                    "port": 25,
+                    "service": "SMTP"
+                },
+                {
+                    "port": 53,
+                    "service": "DNS"
+                },
+                {
+                    "port": 80,
+                    "service": "HTTP"
+                }
+            ],
+            "issues": [
+                {
+                    "issue": "SSH service publicly accessible",
+                    "severity": "Low",
+                    "evidence": "Port 22 - SSH",
+                    "recommendation": "Review SSH access controls, authentication settings and network restrictions."
+                }
+            ]
+        },
+        "headers": {
+            "found": [],
+            "missing": [
+                {
+                    "header": "Content-Security-Policy",
+                    "description": "Helps reduce XSS and content injection attacks."
+                },
+                {
+                    "header": "Strict-Transport-Security",
+                    "description": "Forces browsers to use HTTPS."
+                },
+                {
+                    "header": "X-Frame-Options",
+                    "description": "Helps protect against clickjacking."
+                },
+                {
+                    "header": "X-Content-Type-Options",
+                    "description": "Helps prevent MIME-type sniffing."
+                },
+                {
+                    "header": "Referrer-Policy",
+                    "description": "Controls how much referrer information is shared."
+                }
+            ],
+            "issues": [
+                {
+                    "issue": "Missing security header: Content-Security-Policy",
+                    "severity": "Low",
+                    "evidence": "Helps reduce XSS and content injection attacks.",
+                    "recommendation": "Review and configure the Content-Security-Policy HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: Strict-Transport-Security",
+                    "severity": "Low",
+                    "evidence": "Forces browsers to use HTTPS.",
+                    "recommendation": "Review and configure the Strict-Transport-Security HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: X-Frame-Options",
+                    "severity": "Low",
+                    "evidence": "Helps protect against clickjacking.",
+                    "recommendation": "Review and configure the X-Frame-Options HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: X-Content-Type-Options",
+                    "severity": "Low",
+                    "evidence": "Helps prevent MIME-type sniffing.",
+                    "recommendation": "Review and configure the X-Content-Type-Options HTTP security header where appropriate."
+                },
+                {
+                    "issue": "Missing security header: Referrer-Policy",
+                    "severity": "Low",
+                    "evidence": "Controls how much referrer information is shared.",
+                    "recommendation": "Review and configure the Referrer-Policy HTTP security header where appropriate."
+                }
+            ]
+        },
+        "cookies": {
+            "cookies_found": [],
+            "issues": []
+        },
+        "ssl": {
+            "available": false,
+            "valid": false,
+            "tls_version": null,
+            "issuer": null,
+            "subject": null,
+            "expires": null,
+            "days_remaining": null,
+            "issues": []
+        },
+        "server_info": {
+            "server": null,
+            "powered_by": null,
+            "other_headers": {},
+            "issues": []
+        },
+        "redirects": {
+            "redirect_count": 1,
+            "redirect_chain": [
+                {
+                    "status_code": 302,
+                    "url": "http://main.gvpims.in/details_display.jsp",
+                    "location": "home.jsp"
+                }
+            ],
+            "final_url": "http://main.gvpims.in/home.jsp",
+            "https_upgrade": false,
+            "issues": [
+                {
+                    "issue": "HTTP does not redirect to HTTPS",
+                    "severity": "Medium",
+                    "recommendation": "Configure HTTP requests to redirect to HTTPS."
+                }
+            ]
+        },
+        "robots": {
+            "found": false,
+            "url": "http://main.gvpims.in/robots.txt",
+            "status_code": 404,
+            "disallowed_paths": [],
+            "issues": []
+        },
+        "securitytxt": {
+            "found": false,
+            "url": "http://main.gvpims.in/.well-known/security.txt",
+            "status_code": 404,
+            "contacts": [],
+            "expires": null,
+            "policy": null,
+            "issues": [
+                {
+                    "issue": "security.txt file not found",
+                    "severity": "Informational",
+                    "recommendation": "Consider publishing a security.txt file containing vulnerability reporting contact information."
+                }
+            ]
+        }
+    }
+}

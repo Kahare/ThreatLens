@@ -1,0 +1,112 @@
+VULNERABILITY SCAN REPORT
+============================================================
+
+SCAN INFORMATION
+------------------------------------------------------------
+Target: http://main.gvpims.in/details_display.jsp
+Domain: main.gvpims.in
+Scan Time: 2026-10-08 04:47:48
+
+RISK SUMMARY
+------------------------------------------------------------
+Overall Risk Level: MEDIUM
+Risk Score: 9
+Total Findings: 8
+
+SEVERITY BREAKDOWN
+------------------------------------------------------------
+Critical: 0
+High: 0
+Medium: 1
+Low: 6
+Informational: 1
+
+DETAILED FINDINGS
+------------------------------------------------------------
+
+Finding 1
+Title: HTTP does not redirect to HTTPS
+Severity: Medium
+Score: 3
+Recommendation: Configure HTTP requests to redirect to HTTPS.
+
+Finding 2
+Title: SSH service publicly accessible
+Severity: Low
+Score: 1
+Evidence: Port 22 - SSH
+Recommendation: Review SSH access controls, authentication settings and network restrictions.
+
+Finding 3
+Title: Missing security header: Content-Security-Policy
+Severity: Low
+Score: 1
+Evidence: Helps reduce XSS and content injection attacks.
+Recommendation: Review and configure the Content-Security-Policy HTTP security header where appropriate.
+
+Finding 4
+Title: Missing security header: Strict-Transport-Security
+Severity: Low
+Score: 1
+Evidence: Forces browsers to use HTTPS.
+Recommendation: Review and configure the Strict-Transport-Security HTTP security header where appropriate.
+
+Finding 5
+Title: Missing security header: X-Frame-Options
+Severity: Low
+Score: 1
+Evidence: Helps protect against clickjacking.
+Recommendation: Review and configure the X-Frame-Options HTTP security header where appropriate.
+
+Finding 6
+Title: Missing security header: X-Content-Type-Options
+Severity: Low
+Score: 1
+Evidence: Helps prevent MIME-type sniffing.
+Recommendation: Review and configure the X-Content-Type-Options HTTP security header where appropriate.
+
+Finding 7
+Title: Missing security header: Referrer-Policy
+Severity: Low
+Score: 1
+Evidence: Controls how much referrer information is shared.
+Recommendation: Review and configure the Referrer-Policy HTTP security header where appropriate.
+
+Finding 8
+Title: security.txt file not found
+Severity: Informational
+Score: 0
+Recommendation: Consider publishing a security.txt file containing vulnerability reporting contact information.
+
+
+MODULE SUMMARY
+------------------------------------------------------------
+
+[PORTS]
+Issues detected: 1
+
+[HEADERS]
+Issues detected: 5
+
+[COOKIES]
+Issues detected: 0
+
+[SSL]
+Issues detected: 0
+
+[SERVER_INFO]
+Issues detected: 0
+
+[REDIRECTS]
+Issues detected: 1
+
+[ROBOTS]
+Issues detected: 0
+
+[SECURITYTXT]
+Issues detected: 1
+
+
+DISCLAIMER
+------------------------------------------------------------
+This scanner performs basic security checks and does not provide a complete vulnerability assessment. Testing should only be performed against systems you own or have explicit permission to assess.

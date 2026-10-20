@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import api from "../api";
 const Register = () => {
   const navigate = useNavigate();
 
@@ -53,7 +53,7 @@ const Register = () => {
     setLoading(true);
 
     try {
-      await axios.post("http://localhost:8000/api/register", {
+      await api.post("/api/register", {
         name: name.trim(),
         email: email.trim(),
         password,

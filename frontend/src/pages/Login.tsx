@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import api from "../api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -36,8 +37,8 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/login",
+      const response = await api.post(
+  "/api/login",
         {
           email: email.trim(),
           password,
