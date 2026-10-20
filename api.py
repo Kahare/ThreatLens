@@ -25,6 +25,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "https://threatlens-evj23fpwf-td-8717.vercel.app",
+        "https://threatlens-7zmmzhi9o-td-8717.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
